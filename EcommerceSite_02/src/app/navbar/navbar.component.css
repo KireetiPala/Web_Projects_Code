@@ -1,0 +1,23 @@
+.bg-primary{
+ background: #0062cc;
+}
+.color-me li a{
+ color: #fff;
+ font-size:1.8rem;
+ background: none;
+}
+.color-me li a:hover{
+ background: none;
+ filter: brightness(90%);
+}
+.color-sitename{
+ font-weight: bold;
+ color: yellow;
+ font-size:2rem;
+}
+.bg-primary .navbar-toggle .icon-bar{
+ background-color: #fff;
+}
+.active{
+ font-weight: bold; 
+}

@@ -1,0 +1,88 @@
+<form [formGroup]="addProductForm" (ngSubmit)="onSubmitAddProduct(addProductForm)">
+ <div class="panel panel-primary">
+  <div class="panel-heading">
+   <h3 class="panel-title">Add Product Information</h3>
+  </div>
+  <div class="panel-body">
+   <div class="form-group">
+    <label for="" class="col-sm-4 control-label">Product ID:</label>
+    <div class="col-sm-8">
+     <input type="text" formControlName="productId" class="form-control">
+    </div>
+   </div>
+
+   <div class="form-group" [ngClass]="{'has-error': productName.touched && productName.invalid }">
+    <label for="" class="col-sm-4 control-label">ProductName:</label>
+    <div class="col-sm-8">
+     <input type="text" formControlName="productName" class="form-control">
+     <span *ngIf="productName.touched && productName.invalid">
+      <span *ngIf="productName.errors.required" class="help-block">
+       Product name is required
+      </span>
+      <span *ngIf="productName.errors.minlength || productName.errors.maxlength" class="help-block">
+       Product name should be between 5 to 200 characters length
+      </span>
+     </span>
+    </div>
+   </div>
+
+   <div class="form-group" [ngClass]="{'has-error': productDescription.touched && productDescription.invalid }">
+    <label for="" class="col-sm-4 control-label">Product Description:</label>
+    <div class="col-sm-8">
+     <textarea formControlName="productDescription" name="" id="" cols="30" rows="10" class="form-control"></textarea>
+     <span *ngIf="productDescription.touched && productDescription.invalid">
+      <span *ngIf="productDescription.errors.required" class="help-block">
+       Product Description is required
+      </span>
+      <span *ngIf="productDescription.errors.minlength || productDescription.errors.maxlength" class="help-block">
+       Product Description should be between 20 to 200 characters length
+      </span>
+     </span>
+    </div>
+   </div>
+
+   <div class="form-group" [ngClass]="{'has-error': productURL.touched && productURL.invalid }">
+    <label for="" class="col-sm-4 control-label">Product URL:</label>
+    <div class="col-sm-8">
+     <input type="url" formControlName="productURL" class="form-control">
+     <span *ngIf="productURL.touched && productURL.invalid">
+      <span *ngIf="productURL.errors.required" class="help-block">
+       Product URL is required
+      </span>
+     </span>
+    </div>
+   </div>
+
+   <div class="form-group" [ngClass]="{'has-error': productPrice.touched && productPrice.invalid }">
+    <label for="" class="col-sm-4 control-label">Product Price:</label>
+    <div class="col-sm-8">
+     <input type="text" formControlName="productPrice" class="form-control">
+     <span *ngIf="productPrice.touched && productPrice.invalid">
+      <span *ngIf="productPrice.errors.required" class="help-block">
+       Product Price is required
+      </span>
+     </span>
+    </div>
+   </div>
+
+   <div class="form-group" [ngClass]="{'has-error': category.touched && category.invalid }">
+    <label for="" class="col-sm-4 control-label">Select Category:</label>
+    <div class="col-sm-8">
+     <select formControlName="category" class="form-control">
+      <option *ngFor="let obj of catName" [value]="obj.CatName">
+       {{obj.CatName}}
+      </option>
+     </select>
+     <span *ngIf="category.touched && category.invalid">
+      <span *ngIf="category.errors.required" class="help-block">
+       Category selection is required
+      </span>
+     </span>
+    </div>
+   </div>
+  </div>
+  <div class="panel-footer">
+   <button class="btn btn-primary" [disabled]="!addProductForm.valid">Submit Product Information</button>
+  </div>
+ </div>
+</form>

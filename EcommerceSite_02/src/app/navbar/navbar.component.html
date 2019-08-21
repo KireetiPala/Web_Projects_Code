@@ -1,0 +1,41 @@
+<nav class="navbar bg-primary">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#NavbarItems">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand text-uppercase color-sitename" href="#">Yaswitha's store</a>
+    </div>
+    <div class="collapse navbar-collapse" id="NavbarItems">
+      <ul class="nav navbar-nav color-me">
+        <li><a routerLink="Home" routerLinkActive="active">Home</a></li>
+        <li *ngIf="authservice.loggedIn()">
+          <a routerLink="ViewProducts" routerLinkActive="active">View Products</a>
+        </li>
+        <li><a routerLink="TodaysDeals" routerLinkActive="active">Today's Deals</a></li>
+        <li><a routerLink="Giftcards" routerLinkActive="active">Gift Cards</a></li>
+        <li><a routerLink="AboutUs" routerLinkActive="active">About Us</a></li>
+        <li><a routerLink="ContactUs" routerLinkActive="active">Contact Us</a></li>
+        <!-- <li><a routerLink="CashonDelivery" routerLinkActive="active">Cash On Delivery</a></li> -->
+        <li><a routerLink="AddProduct" routerLinkActive="active">Add Product</a></li>
+        <!-- <li><a routerLink="ProductView" routerLinkActive="active">Product Detail</a></li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right color-me">
+        <li *ngIf="!authservice.loggedIn()">
+          <a routerLink="SignUp" routerLinkActive="active">
+            <span class="glyphicon glyphicon-user"></span>
+            Signup
+          </a>
+        </li>
+        <li><a routerLink="Login" routerLinkActive="active" *ngIf="!authservice.loggedIn()"><span
+              class="glyphicon glyphicon-log-in"></span> Login</a>
+        </li>
+        <li><a routerLink="Login" routerLinkActive="active" *ngIf="authservice.loggedIn()"
+            (click)="authservice.logOutUser()"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,92 @@
+.container{
+ width: 100%;
+ margin-top: 5%;
+ font-family: sans-serif;
+ letter-spacing: 1px;
+}
+.container h2{
+ background: #0062cc;
+ width: 200px;
+ color: #fff;
+ font-size: 24px;
+ padding: 5px;
+ height: 40px;
+}
+.container h2::after{
+ content: '';
+ border-top: 40px solid #0062cc;
+ border-right: 40px solid transparent;
+ position: relative;
+ left: 48px;
+ top: 36px;
+}
+.row {
+ margin-top: 25px;
+}
+img{
+ width: 100%;
+ height: 350px;
+}
+.product-top{
+ opacity: 2;
+ border-right: 1px solid grey;
+}
+.product-bottom .fa{
+ color: green;
+ font-size: 10px;
+}
+.product-bottom h3{
+ font-size: 20px;
+ font-weight: bold;
+}
+.product-bottom h5{
+ font-size: 15px;
+ padding-bottom: 10px;
+}
+.overlay{
+ float: right;
+ display: block;
+ opacity: 0;
+ position: absolute;
+ top: 10%;
+ right: 0;
+ margin-right: 0;
+ width: 70px;
+}
+.product-top:hover .overlay{
+ opacity: 1;
+ margin-right: 5%;
+ transition: 0.5s;
+}
+.overlay .fa{
+ cursor: pointer;
+ background-color:#fff;
+ color: #000;
+ font-size: 20px;
+ padding: 18%;
+ width: 35px;
+ height: 35px;
+ margin: 5%;
+}
+.overlay .btn-secondary{
+ background: transparent !important;
+ border: none !important;
+ box-shadow: none !important;
+}
+
+/* below code is for quick product view */
+.product_view .modal-dialog{
+ top: 10%;
+ max-width: 800px; 
+ width: 100%;
+}
+.addpadding{
+ padding: 5px;
+}
+.space-ten{
+ padding: 25px 0;
+}
+.box-width{
+ width: 130px;
+}
+

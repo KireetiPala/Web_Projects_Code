@@ -1,0 +1,117 @@
+<form [formGroup]="cashonDeliveryForm" (ngSubmit)="storeCustoumerAddress(cashonDeliveryForm)">
+  <div class="panel panel-primary">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Cash On Delivery Details</h3>
+    </div>
+
+    <div class="panel-body">
+
+      <div class="form-group" [ngClass]="{'has-error' : name.touched && name.invalid}">
+        <label for="" class="col-sm-4 control-label">Name:</label>
+        <div class="col-sm-8">
+          <input type="text" formControlName="name" class="form-control" placeholder="Enter your complete name">
+          <span *ngIf="name.touched && name.invalid">
+            <span *ngIf="name.errors.required" class="help-block">
+              Your complete name is required
+            </span>
+            <span *ngIf="name.errors.maxlength" class="help-block">
+              Your name should not grater than 20 characters
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': mobileNum.touched && mobileNum.invalid}">
+        <label for="" class="col-sm-4 control-label">Mobile Number:</label>
+        <div class="col-sm-8">
+          <input type="text" formControlName="mobileNum" class="form-control" placeholder="Enter your mobile number">
+          <span *ngIf="mobileNum.touched && mobileNum.invalid">
+            <span *ngIf="mobileNum.errors.required" class="help-block">
+              Mobile number is required
+            </span>
+            <span *ngIf="mobileNum.errors.pattern" class="help-block">
+              Enter valid mobile number
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': address.touched && address.invalid}">
+        <label for="" class="col-sm-4 control-label">Complete Address:</label>
+        <div class="col-sm-8">
+          <textarea formControlName="address" cols="30" rows="8" class="form-control"
+            placeholder="Enter your address"></textarea>
+          <span *ngIf="address.touched && address.invalid">
+            <span *ngIf="address.errors.required" class="help-block">
+              Enter your address
+            </span>
+            <span *ngIf="address.errors.maxlength" class="help-block">
+              Your address should not cross 120 bytes.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': landmark.touched && landmark.invalid}">
+        <label for="" class="col-sm-4 control-label">Land Mark:</label>
+        <div class="col-sm-8">
+          <input type="text" formControlName="landmark" class="form-control" placeholder="Provide us land mark">
+          <span *ngIf="landmark.touched && landmark.invalid">
+            <span *ngIf="landmark.errors.required" class="help-block">
+              Enter landmark name
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': state.touched && state.invalid}">
+        <label for="" class="col-sm-4 control-label">State:</label>
+        <div class="col-sm-8">
+          <select (change)="onChange($event.target.value)" formControlName="state" class="form-control">
+            <option *ngFor="let object of States" [value]="object.stateId">
+              {{object.stateName}}
+            </option>
+          </select>
+          <span *ngIf="state.touched && state.invalid">
+            <span *ngIf="state.errors.required" class="help-block">
+              Select your state name from drop downlist
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': city.touched && city.invalid}">
+        <label for="" class="col-sm-4 control-label">City:</label>
+        <div class="col-sm-8">
+          <select formControlName="city" class="form-control">
+            <option *ngFor="let object of Cities" [value]="object.cityName">
+              {{object.cityName}}
+            </option>
+          </select>
+          <span *ngIf="city.touched && state.invalid">
+            <span *ngIf="city.errors.required" class="help-block">
+              Select state first to get city list
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error': pincode.touched && pincode.invalid}">
+        <label for="" class="col-sm-4 control-label">Pincode:</label>
+        <div class="col-sm-8">
+          <input type="text" formControlName="pincode" class="form-control" placeholder="Your area pincode">
+          <span *ngIf="pincode.touched && pincode.invalid">
+            <span *ngIf="pincode.errors.required" class="help-block">
+              Provide your area pincode number
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <button type="submit" [disabled]="!cashonDeliveryForm.valid" class="btn btn-primary">Submit Details</button>
+    </div>
+  </div>
+</form>

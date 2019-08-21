@@ -1,0 +1,44 @@
+<form [formGroup]="loginform" (ngSubmit)="signInLogin(loginform)">
+ <div class="panel panel-primary">
+  <div class="panel-heading">
+   <h3 class="panel-title">Login Here</h3>
+  </div>
+
+  <div class="panel-body">
+   <div class="form-group" [ngClass]="{'has-error' : emailID.touched && emailID.invalid}">
+    <label for="" class="col-sm-4 control-label">Email ID:</label>
+    <div class="col-sm-8">
+     <input type="email" formControlName="emailId" class="form-control">
+     <span *ngIf="emailID.touched && emailID.invalid">
+      <span *ngIf="emailID.errors.required" class="help-block">
+       Email ID is required
+      </span>
+      <span *ngIf="emailID.errors.pattern" class="help-block">
+       Enter valid email ID
+      </span>
+     </span>
+    </div>
+   </div>
+
+   <div class="form-group" [ngClass]="{'has-error': password.touched && password.invalid}">
+    <label for="" class="col-sm-4 control-label">Password:</label>
+    <div class="col-sm-8">
+     <input type="password" formControlName="password" class="form-control">
+     <span *ngIf="password.touched && password.invalid">
+      <span *ngIf="password.errors.required" class="help-block">
+       Password is required
+      </span>
+      <span *ngIf="password.errors.pattern" class="help-block">
+       Enter Valid Password
+      </span>
+     </span>
+    </div>
+   </div>
+  </div>
+
+  <div class="panel-footer">
+   <button type="submit" [disabled]="loginform.invalid" class="btn btn-primary">Submit</button>
+   <a routerLink="SignUp">&nbsp;&nbsp; Click To Register</a>
+  </div>
+ </div>
+</form>
